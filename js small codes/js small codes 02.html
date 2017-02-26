@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>js small codes 02</title>
+
+<script>
+function sum(){
+  var i=10;
+  var j=10;
+  var m = i+j;
+  document.getElementById("pid").innerHTML=m;
+}
+</script>
+
+<script>
+function add(){
+  var a="10";
+  var b="10";
+  var m = a+b;
+  document.getElementById("pidid").innerHTML=m;
+}
+</script>
+
+<script>
+function demo1(a,b){
+    var sum=a+b;
+	document.getElementById("demo").innerHTML=sum;
+}
+</script>
+
+<script>
+function demo2(){
+    var a=10;
+	var b=10;
+	var sum=a+b;
+	alert(sum);
+}
+demo2();
+</script>
+
+<script>
+function demo3(){
+    return "hello";
+	alert("我不会执行！");
+}
+var a=demo3();
+alert(a);
+</script>
+
+<script>
+function demo4(a,b){
+    if(a>b){
+	    return "a比b大";
+	}else{
+	    return "b比a大";
+	}
+}
+v1=demo4(10,20);
+alert(v1);
+</script>
+
+</head> 
+
+<body>
+<!-- 数值相加 -->
+<p>i=10,j=10,i+j=?</p>
+<p id="pid"></p>
+<button onclick="sum()">结果</button>
+</br>
+
+<!-- 字符串相加，拼接操作 -->
+<p>a="10",b="10",a+b=?</p>
+<p id="pidid"></p> 
+<button onclick="add()">结果</button>
+<!-- 注意：任何数字与字符串相加结果都是字符串类型 -->
+</br>
+
+<p>通过传递参数计算两个数相加的结果</p>
+<p>传递的参数为a=10,b=20,a+b=?</p>
+<p id="demo"></p>
+<button onclick="demo1(10,20)">结果</button>
+</br>
+
+<!-- 函数的两种调用方式 -->
+<p>函数的调用（直接调用函数）</p>
+<p>效果为打开页面后直接弹出窗口，结果为20<p>
+<br/>
+<p>函数的调用（通过触发按钮调用）</p>
+<p>效果为点击“函数调用”按钮之后，弹窗出现，结果为20</p>
+<button onclick="demo2()">函数调用</button>
+
+<p>return实现将函数的值返回给调用它的地方，return后面的语句将不会执行。</p>
+<br/>
+
+<p>比较两个数a和b的大小,通过弹窗实现</p>
+
+
+</body>
+</html> 

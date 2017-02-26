@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html> 
+<head lang="en">
+<meta charset="UTF-8">
+<title>js small codes 01</title>
+<script>
+document.write("hello world!");//文档输出
+document.write("<h1>标题</h1>");//支持标签，实现h1的效果
+</script> 
+
+</head>
+
+<body>
+<p id="pid">hello</p>
+
+<script>
+document.getElementById("pid").innerHTML="nihao";//改变pid的元素内容为nihao
+document.getElementById("pid").innerHTML="world";
+document.getElementById("pid").innerHTML="hello world";
+//由于JS代码是按照编写顺序依次执行，所以以上执行的结果是最后一个“hello world”，前两个被覆盖
+</script>
+
+<script>
+//若想依次输出以上代码，应该按下列方式书写
+document.write("nihao");
+document.write("world");
+document.write("hello world");
+</script>
+<br/>
+
+<script>
+var a=10;//定义变量
+var b=10;
+m=a+b;
+document.write(m);//输出m的值
+</script>
+<br/>
+
+<script>
+//JS数据类型
+var string="hello";//字符串
+var num = 10;//数字
+var flag=true;//布尔
+
+//数组的第一种写法
+var arr=["hello","how","are","you"];//数组
+document.write(arr[0]);//数组是从0开始计算，所以arr[0]的输出结果是hello
+//数组的第二种写法
+var arr=new Array("hello","how","are","you");
+document.write(arr[0]);
+//数组的第三种写法
+var arr=new Array();//不规定数组的大小
+arr[0]="hello";
+arr[1]="how";
+arr[2]="are";
+arr[3]="you";
+document.write(arr[0]);
+//以上三种写法等效，输出的结果都是hello
+
+var n = null;//空
+r=1;//未定义
+
+</script>
+</body>
+</html> 
