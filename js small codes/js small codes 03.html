@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>js small codes 03</title>
+
+<script>
+function ready(){
+    alert("页面加载完毕");
+}
+</script>
+
+<script>
+function demo1(){
+    try{
+	    alert(str);
+	}catch(err){
+	    alert(err);
+	}
+}
+demo1();
+</script>
+
+<script>
+var str="hello";
+function demo2(){
+    try{
+	    alert(str);
+	}catch(err){
+	    alert(err);
+	}
+}
+demo2();
+</script>
+
+<script>
+function demo3(){
+    try{
+	    var e=document.getElementById("txt").value;
+		if(e==""){
+		    throw"请输入内容！";
+		}
+	}catch(err){
+	    alert(err);
+	}
+}
+</script>
+
+<script>
+function demo4(){
+    document.write("hello");
+}
+</script>
+
+<script>
+function over(a){
+    a.innerHTML = "hello";
+}
+function out(a){
+    a.innerHTML = "world";
+}
+</script>
+
+<script>
+function select(bg){
+    bg.style.background="red";
+}
+</script>
+
+<script>
+function focus(bg){
+    bg.style.background="blue";
+}
+</script>
+
+<style type="text/css">
+.div{
+    width:100px;
+	height:100px;
+	background-color:aqua;
+}
+</style>
+
+</head> 
+
+<body onload="ready()">
+<p>异常捕获：
+try{
+    发生异常的代码块;
+}catch（err）{
+    错误信息处理;
+}
+</p>
+<p>第一个弹窗由于str未定义，所以发生异常，弹出异常消息。</p>
+<p>定义str之后，第二个弹窗弹出的内容为hello，没有发生异常。</p>
+<br/>
+<p>通过throw语句创建一个自定义错误。</p>
+<input id="txt" type="text"/>
+<input id="btn" type="button" onclick="demo3()" value="提交"/>
+<br/>
+
+<h3>JavaScript事件</h3>
+<p>onclick 事件:<button onclick="demo4()">按钮</button></p>
+<p>onmouseout和onmouseover事件：</p>
+<div class="div" onmouseover="over(this)" onmouseout="out(this)"></div>
+<p>onchange 事件：<input type="text" onchange="alert('内容被改变了')"></p>
+<p>onselect 事件和onfocus事件：<input type="text" onselect="select(this)" onfocus="focus(this)"></p>
+</body>
+
+</html>
