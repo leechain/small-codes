@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>js small codes 04</title>
+</head>
+
+<body>
+<div id="div">
+	<button id="btn1">按钮</button>
+	<a href="http://www.baidu.com">百度</a>
+</div>
+
+<script>
+	var btn1=document.getElementById("btn1");
+	btn1.onclick=function(){alert("Hello DOM0级事件处理程序1")};//被覆盖
+	btn1.onclick=function(){alert("Hello DOM0级事件处理程序2")};
+	btn1.onclick=null;//清除事件
+</script>
+
+<script>
+	var btn1=document.getElementById("btn1");
+	btn1.addEventListener("click",demo1);
+	btn1.addEventListener("click",demo2);
+	btn1.addEventListener("click",demo3);
+	//二级事件不会被覆盖，下面三个函数依次执行，不会被覆盖
+	function demo1(){
+		alert("DOM2级事件处理程序1");
+	}
+	function demo2(){
+		alert("DOM2级事件处理程序2");
+	}
+	function demo3(){
+		alert("DOM2级事件处理程序3");
+	}
+	//移除事件，比如移除事件2
+	btn1.removeEventListener("click",demo2);
+	//移除事件1和事件3
+	btn1.removeEventListener("click",demo1);
+	btn1.removeEventListener("click",demo3);
+</script>
+
+<script>
+
+	document.getElementById("btn1").addEventListener("click",showType);
+	document.getElementById("div").addEventListener("click",showDiv);
+	document.getElementById("aid").addEventListener("click",showA);
+	function showType(event){
+		alert(event.type);//获取当前事件类型
+		alert(event.target);//获取当前事件目标
+		event.stopPropagation();//阻止事件冒泡
+	}	
+	function showDiv(){ 
+		alert("div");//点击按钮，div也会执行，属于事件冒泡
+	}
+	function showA(event){
+		event.stopPropagation();
+		event.preventDefault();
+	}
+	
+</script>
+
+
+
+
+<script>
+	
+</script>
+</body>
+</html>
