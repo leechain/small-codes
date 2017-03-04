@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="grammar" ng-controller="grammar3">
+<head lang="en">
+<meta charset="UTF-8">
+<title>数据绑定</title>
+</head>
+<body>
+
+<!-- hello界面的延展：组合绑定 -->
+<ul>
+	<li>姓：<input type="text" ng-model="xing"/></li>
+	<li>名：<input type="text" ng-model="ming"/></li>
+	<li>hello <b>{{xing||""}}{{ming||""}}</b></li>
+	<li>hello <b>{{FullName}}</b></li>
+	<li>hello <b>{{xing}}</b></li> 
+	<li>hello <b>{{ming}}</b></li>
+</ul>
+
+<ul>
+	<li ng-repeat="a in UserNameList">{{a}}</li>
+</ul>
+
+<hr/>
+<table>
+	<thead>
+		<tr>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>星座</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="x in UserInfoList">
+			<td>{{x[0]}}</td>
+			<td>{{x[1]}}</td>
+			<td>{{x[2]}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<script src="angular-1.0.1.min.js"></script>
+
+<script>
+	var app=angular.module("grammar",[]);
+	app.controller("grammar3",function($scope){
+		$scope.xing="";
+		$scope.ming="";
+		
+		$scope.FullName=$scope.xing+$scope.ming;
+		
+		$scope.$watch("xing",function(){
+			$scope.FullName=$scope.xing+$scope.ming;
+		})
+		
+		$scope.$watch("ming",function(){
+			$scope.FullName=$scope.xing+$scope.ming;
+		})
+		
+		$scope.UserNameList=["Tom","Jerry","Hobe","Eddie"];
+		
+		$scope.UserInfoList=[
+			["Tom",25,"巨蟹座"],
+			["Jerry",30,"水瓶座"],
+			["Hobe",22,"双子座"],
+			["Eddie",38,"天蝎座"]
+		];
+	});
+</script>
+</body>
+</html>

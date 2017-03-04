@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="grammar" ng-controller="grammar2" ng-init="AccountId='1';AccountName='Tom';Location='CHINA';AccountInfo={'AccountId':2,'AccountName':'Eddie','Location':'CHINA'};Week=['Mon','Tus','Wen','Thu','Fri','Sat','Sun'];">
+<head lang="en">
+<meta charset="UTF-8">
+<title>语法</title>
+
+</head>
+
+<body>
+
+<b>{{Now}}</b>
+<b>{{Week[5]}}</b>
+
+<!-- 定义数字和字符串 -->
+<ul>
+<li>{{AccountInfo.AccountId}}</li>
+<li>{{AccountInfo.AccountName}}</li>
+<li>{{AccountInfo.Location}}</li>
+</ul>
+<script src="angular-1.0.1.min.js"></script>
+
+
+<!-- 定义日期和时间 -->
+<script>
+var app=angular.module("grammar",[]);
+app.controller("grammar2",function($scope){
+	var now1=new Date();
+	$scope.Now=now1.getHours()+":"+now1.getMinutes()+":"+now1.getSeconds();
+	
+	$scope.SetTimer=function(){
+		$scope.$apply(function(){
+			console.log($scope.Now);
+			var now=new Date();
+			$scope.Now=now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
+			console.log($scope.Now);
+		})
+	}
+	$scope.SetTimerInterval=setInterval($scope.SetTimer,1*1000);
+})
+</script>
+<!-- 定义数组 -->
+<!-- 定义对象 -->
+</body>
+</html> 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app>
+<head lang="en">
+<meta charset="UTF-8">
+<title>hello</title>
+</head>
+
+<body>
+
+<b>传统模式</b>
+<ul>
+<li>姓：<input type="text" id="xingInput"/></li>
+<li>名：<input type="text" id="mingInput"/></li>
+<li>hello <b id="nameView"></b></li>
+<li><a href="#" id="showButton">输出姓名</a></li>
+</ul>
+
+
+<b>AngularJS模式</b>
+<ul>
+<li>姓：<input type="text" ng-model="xing"/></li>
+<li>名：<input type="text" ng-model="ming"/></li>
+<li>hello <b>{{xing||""}}{{ming||""}}</b></li>
+<li><a href="#" ng-click="xing='li';ming='jj';">输出姓名</a></li>
+</ul>
+
+
+<script src="angular-1.0.1.min.js"></script>
+
+<script>
+var xing=document.getElementById("xingInput");
+var ming=document.getElementById("mingInput");
+
+var showButton=document.getElementById("showButton");
+showButton.onclick=function(){
+	var name=xing.value+" "+ming.value;
+	var nameView=document.getElementById("nameView");
+	nameView.innerHTML=name;
+	return false;
+}
+</script>
+
+</body>
+</html>

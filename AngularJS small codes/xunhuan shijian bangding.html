@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html ng-app="grammar" ng-controller="grammar4">
+<head lang="en">
+<meta charset="UTF-8">
+<title>循环绑定和事件绑定</title>
+</head>
+<body>
+
+<div style="margin-bottom:50px;">
+	<form ng-submit="SubmitForm()">
+		<ul>
+			<li>姓名：<input ng-model="NewName"/></li>
+			<li>年龄：<input ng-model="NewAge"/></li>
+			<li><input type="submit" value="提交"/></li>
+		</ul>
+	</form>
+</div>
+
+<div style="margin-bottom:50px;">
+点击数:<b>{{Counter}}</b>
+<input type="text" ng-change="CounterClick()" ng-model="counterInput"/>
+<br/>
+<input type="text" ng-keypress="CounterClick()" ng-model="counterInput1"/>
+<button ng-click="CounterClick()">点击</button>
+</div>
+
+<div style="margin-bottom:50px;">
+<p ng-show="ContentFlag">这里是文章内容</p>
+<button ng-click="HideContent()">隐藏/显示</button>
+</div>
+
+<table>
+	<thead>
+		<tr>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>星座</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="x in UserInfoList">
+			<td>{{x[0]}}</td>
+			<td>{{x[1]}}</td>
+			<td>{{x[2]}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<table style="margin-top:30px;border:1px solid blue;">
+	<thead>
+		<tr>
+			<th>序号</th>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>星座</th>
+			<th>工作年限</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="x in UserEntityList|orderBy:['Age','-WorkYear']|filter:'座'">
+		<!-- 默认排序为升序，如果在后面加上true则变为降序排序 -->
+			<td>{{$index+1}}</td><!-- 为表格增加序号，默认从0开始，加1后从1开始 -->
+			<td>{{x.Name|uppercase}}</td><!-- 把所有名字都变成了大写 -->
+			<td>{{x.Age}}</td>
+			<td>{{x.Constellation}}</td>
+			<td>{{x.WorkYear}}</td>
+			<td><button ng-click="DeleteUser(x.Name)">删除</button></td>
+		</tr>
+	</tbody>
+</table>
+
+<script src="angular-1.0.1.min.js"></script>
+
+<script>
+	var app=angular.module("grammar",[]);
+	app.controller("grammar4",function($scope){
+	
+		$scope.UserNameList=["Tom","Jerry","Hobe","Eddie"];
+		
+		$scope.UserEntityList=[
+		  {"Name":"Tom","Age":25,"Constellation":"巨蟹座","WorkYear":10},
+		  {"Name":"Jerry","Age":30,"Constellation":"水瓶座","WorkYear":5},
+		  {"Name":"Hobe","Age":22,"Constellation":"双子座","WorkYear":15},
+		  {"Name":"Eddie","Age":38,"Constellation":"天蝎座","WorkYear":3}
+		];
+		
+		$scope.UserInfoList=[
+			["Tom",25,"巨蟹座"],
+			["Jerry",30,"水瓶座"],
+			["Hobe",22,"双子座"],
+			["Eddie",38,"天蝎座"]
+		];
+		
+		$scope.DeleteUser=function(userName){
+			$scope.UserEntityList.forEach(function(user,i,list){
+				if(user.Name==userName){
+					list.splice(i,1);
+				}
+			})
+		}
+		
+		$scope.Counter=0;
+		$scope.CounterClick=function(){
+			$scope.Counter=$scope.Counter+1;
+		};
+		
+		$scope.ContentFlag=true;
+		$scope.HideContent=function(){
+			$scope.ContentFlag=!$scope.ContentFlag;
+		}
+		
+		$scope.SubmitForm=function(){
+			var name=$scope.NewName;
+			var age=$scope.NewAge;
+			console.log(
+				{name:name,age:age}
+			);
+			return false;
+			
+		}
+		
+	});
+</script>
+</body>
+</html>

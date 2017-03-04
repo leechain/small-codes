@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="controller">
+<head lang="en">
+<meta charset="UTF-8">
+<title>控制器</title>
+</head>
+
+
+<body>
+
+<!-- 定义两个控制器 -->
+<div style="margin-bottom:50px;" ng-controller="MomCtr">
+<h1>{{Name}}</h1>
+<h2>{{Location}}</h2>
+<button ng-click="ChangeHouse()">换房子</button>
+
+<div style="margin-top:50px;" ng-controller="MeCtr">
+<h1>{{Name}}</h1>
+<h2>{{Location}}</h2>
+<h4>{{Mobile}}</h4>
+</div>
+
+<div style="margin-top:50px;" ng-controller="BfCtr">
+<h1>{{Name}}</h1>
+<h4>{{Mobile}}</h4>
+<button ng-click="Call()">打电话</button>
+</div>
+</div>
+
+
+
+<script src="angular-1.0.1.min.js"></script>
+<script>
+	var app=angular.module("controller",[]);
+	app.controller("MomCtr",function($scope){
+		$scope.Name="母亲控制器";
+		$scope.Location="江苏省南通市";
+		$scope.ChangeHouse=function(){
+			$scope.Location="江苏省南京市";
+		}
+		$scope.$on("callMe",function(){
+		$scope.$broadcast("Bf call you!");
+		});
+	});
+	
+	app.controller("MeCtr",function($scope){
+		$scope.Name="孩子控制器";
+		$scope.Mobile="待机";
+		$scope.$on("Bf call you!",function(){
+			$scope.Mobile="Bf来电";
+		});
+	});
+	
+	app.controller("BfCtr",function($scope){
+		$scope.Name="男朋友控制器";
+		$scope.Mobile="待机";
+		$scope.Call=function(){
+			$scope.Mobile="呼叫对象";
+			$scope.$emit("callMe");
+		}
+		
+	});
+</script>
+</body>
+</html>
