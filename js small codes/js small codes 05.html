@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+<meta charset="UTF-8">
+<title>js small codes 05</title>
+</head>
+
+<body onload="startTime()">
+<script>
+  <!-- 创建对象 -->
+  people = new Object();
+  people.name = "ljj";
+  people.age = "22";
+  document.write("name:"+people.name+",age:"+people.age);
+</script>
+
+<script>
+  people = {name:"ljj",age:"22"};
+  document.write("name:"+people.name+",age:"+people.age);
+</script>
+<br/>
+
+<script>
+  <!-- 利用函数来创建对象 -->
+  function people(name,age){
+    this.name=name;
+	this.age=age;
+  };
+  son = new people("ljj","22");
+  document.write("name:"+son.name+",age:"+son.age);
+</script>
+<br/>
+
+<script>
+  var str="Hello World";
+  var str1="hello baidu xueyuan"
+  <!-- 计算字符串的长度 -->
+  document.write(str.length);
+  
+  <!-- 查询字符串是否存在 -->
+  document.write(str.indexOf("World"));
+  
+  <!-- 内容匹配 -->
+  document.write(str.match("Hello"));
+  
+  <!-- 替换内容 -->
+  document.write(str.replace("World","China"));
+  
+  <!-- 字符串大小写转换 -->
+  document.write(str.toUpperCase());
+  document.write(str.toLowerCase());
+  
+  <!-- 字符串转换为数组 -->
+  var s=str1.split(" ");
+  document.write(s[1]);
+</script>
+<br/>
+
+<script>
+  <!-- Date日期对象 -->
+  var date=new Date();
+  document.write(date);
+  
+  <!-- 获取具体的年份 -->
+  document.write(date.getFullYear());
+  
+  <!-- 获取具体毫秒数 -->
+  document.write(date.getTime());
+  
+  <!-- 设置时间 -->
+  date.setFullYear(2017,1,1);
+  document.write(date);
+</script>
+
+<script>
+  <!-- 时钟示例 -->
+  function startTime(){
+    var today=new Date();
+    var h=today.getHours();
+    var m=today.getMinutes();
+    var s=today.getSeconds();  
+	
+	m=checkTime(m);
+	s=checkTime(s);
+	
+	document.getElementById("timetest").innerHTML=h+":"+m+":"+s;
+	t=setTimeout(function(){
+	  startTime();
+	},1000 )
+  
+  }
+  
+  function checkTime(i){
+    if(i<10){
+	  i="0"+i;
+	}else{
+	  return i;
+	}
+  }
+</script>
+<div id="timetest"></div>
+<br/>
+
+<!-- 数组常用方法 -->
+<script>
+  <!-- 合并数组 -->
+  var a=["hello","world"];
+  var b=["ljj","qbq "];
+  var c=a.concat(b);
+  document.write(c);
+  
+  <!-- 数组排序,默认升序 -->
+  var a=["v","b","a","s","f"];
+  document.write(a.sort());
+  <!-- 数组排序倒序 -->
+  var a=["1","4","3","5","2"];
+  document.write(a.sort(function(a,b){
+    return b-a;
+  }));
+  
+  <!-- 在数组末尾追加元素 -->
+  var a=["a","b"];
+  a.push("c");
+  document.write(a);
+  
+  <!-- 数组的翻转 -->
+  var a=["a","b","c"];
+  document.write(a.reverse());
+</script>
+<br/>
+
+<!-- Math对象的使用 -->
+<script>
+  <!-- 四舍五入 -->
+  document.write(Math.round(2.5));
+
+  <!-- 随机数，范围0-1 -->
+  document.write(parseInt(Math.random()*10));<!-- 从0到10内的随机数 -->
+  
+  <!-- 最大值和最小值 -->
+  document.write(Math.min(24,20,1,100));
+  document.write(Math.max(24,20,1,100));
+  
+  <!-- 绝对值 -->
+  document.write(Math.abs(-10));
+</script>
+</body>
+</html>
