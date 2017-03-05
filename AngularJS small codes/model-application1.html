@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="model-application" ng-controller="application1">
+<head>
+<meta charset="UTF-8">
+<title>模块化应用1</title>
+</head>
+
+<body>
+
+<div>
+<b>指令</b>
+</div>
+
+<div>
+<b>今天天气不错</b>
+</div>
+
+<ul>
+<li>今天天气不错</li>
+</ul>
+
+
+<script src="angular-1.0.1.min.js"></script>
+
+<script>
+  var app=angular.module("model-application",[]);
+  app.controller("application1",function($scope){
+  
+  });
+  
+  app.directive("div",function(){
+    var direction={};
+	direction.restrict="E";<!-- direction.restrict="E",表示匹配div元素；direction.restrict="A",表示匹配含有div属性的元素；direction.restrict="AE",以上两者都匹配。-->
+    direction.template="第一个指令";
+	return direction;
+  });
+  
+
+</script>
+</body>
+</html>
