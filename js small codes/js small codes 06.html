@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>js small codes 06</title>
+</head>
+
+<body>
+  <p name="pn">Hello</p>
+  <p name="pn">Hello</p>
+  <p name="pn">Hello</p>
+  <p name="pn">Hello</p>
+  <hr/>
+  <a id="aid" title="得到了a标签的属性">hello</a>
+  <hr/>
+  <a id="aid1">world</a>
+  <hr/>
+  <ul><li>1</li><li>2</li><li>3</li></ul>
+  <hr/>
+  <button onclick="btnClick()">按钮</button>
+  <!-- 获取name -->
+  <script>
+    function getName(){
+	  var count=document.getElementsByName("pn");
+	  alert(count.length);
+	  var p=count[2];
+	  p.innerHTML="World";
+	}
+	getName();
+  </script>
+  <br/>
+  
+  <!-- 获取元素 -->
+  <script>
+    function getName(){
+	  var count=document.getElementsByTagName("p");
+	  alert(count.length);
+	  var p=count[0];
+	  p.innerHTML="World";
+	}
+	getName();
+  </script>
+  <br/>
+  
+  <!-- 获取元素属性 -->
+  <script>
+  function getAttr(){
+    var anode=document.getElementById("aid");
+	var attr=anode.getAttribute("title");
+	alert(attr);
+  }
+  getAttr();
+  </script>
+  
+  <!-- 设置元素属性 -->
+  <script>
+  function setAttr(){
+    var anode=document.getElementById("aid1");
+	anode.setAttribute("title","动态设置a的title属性");
+	var attr=anode.getAttribute("title");
+	alert(attr);
+  };
+  setAttr();
+  </script>
+  <br/>
+  
+  <!-- 访问子节点 -->
+  <script>
+  function getChildNode(){
+    var childnode=document.getElementsByTagName("ul")[0].childNodes;
+	document.write(childnode.length);
+	document.write(childnode[0].nodeType);
+  };
+  getChildNode();
+  </script>
+  <br/>
+  
+  <script>
+    <!-- window尺寸 -->
+	document.write("宽度："+window.innerWidth+",高度："+window.innerHeight);
+	
+	<!-- window方法 -->
+	function btnClick(){
+	  window.open("js small codes 05.html");
+	  window.close();
+	};	
+  </script>
+</body>
+</html>
