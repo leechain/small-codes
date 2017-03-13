@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js small codes 07</title>
+	</head>
+	
+	<body>
+		<script type="text/javascript" src="out.js"></script>
+		<script type="text/javascript">
+			/*
+			 *演示数组
+			 */
+			var arr1=["aa","bb","cc","dd","ee","ff"];
+			var arr2=["qq","xiaoming",20];
+			
+			println(arr1);
+			println(arr2);
+			
+			//在arr1数组上连接一个元素"mm"，再连接一个arr2数组
+			var newArr=arr1.concat("mm",arr2);//将mm作为新数组中的元素，将arr2数组中的元素也作为新数组中的元素
+			
+			println(newArr);
+			
+			println(arr1.join("-"));
+			println(myJoin(arr1,"+"));
+			
+			//模拟一下join的实现原理
+			function myJoin(arr,separator){
+				var str="";
+				for(var x=0;x<arr1.length;x++){
+					if(x!=arr1.length-1)
+						str+=arr1[x]+separator;
+					else
+						str+=arr1[x];
+				}
+				return str;
+			}
+			
+			//移除数组中的元素并返回该元素，pop
+			println("<hr/>");
+			println(arr1);
+			println(arr1.pop());//删除并返回最后一个元素
+			println(arr1);
+			
+			println("<hr/>");
+			println(arr1.reverse());
+			println(arr1.shift());//删除并返回第一个元素
+			
+			println("<hr/>");
+			println(arr1);
+			arr1.sort();
+			var temp=arr1.splice(1,3,8080,9727,"xixi","haha");//删除元素并可以进行元素的替换
+			println(temp);
+			println(arr1.unshift("uuuu"));
+			println(arr1);	
+			
+		</script>
+	</body>
+</html>
