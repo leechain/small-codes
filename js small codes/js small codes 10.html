@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>演示js中Math对象</title>
+	</head>
+	
+	<body>
+		<script type="text/javascript">
+			/*
+			 *打印指定数据到页面上，并换行
+			 */
+			function println(param){
+				document.write(param+"<br/>");
+			}
+
+			/*
+			 *打印指定数据到页面上
+			 */
+			function print(param){
+				document.write(param);
+			}
+		</script>
+		
+		<script type="text/javascript">
+			/*
+			 *演示Math对象，该对象的方法都是静态的，不需要new，直接Math调用即可
+			 */
+			
+			var num1=Math.ceil(12.34);//返回大于等于指定数据的最小整数
+			var num2=Math.floor(12.34);//返回小于等于指定数据的最大整数
+			var num3=Math.round(12.34);//四舍五入
+			println("num1="+num1);//13
+			println("num2="+num2);//12
+			println("num3="+num3);//12
+			
+			println("<hr/>");
+			var num4=Math.pow(10,2);//pow(x,y)表示计算x的y次方
+			println("num4="+num4);//100
+			
+			//显示1-10的伪随机数
+			println("<hr/>");
+			for(var x=0;x<10;x++){
+				//var num=Math.floor(Math.random()*10+1);
+				//var num=Math.ceil(Math.random()*10);
+				var num=parseInt(Math.random()*10+1);//全局方法
+				println(num);
+			}	
+			
+		</script>
+		
+	</body>
+</html>

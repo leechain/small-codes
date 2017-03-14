@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>全局对象和自定义对象</title>
+	</head>
+	
+	<body>
+		<script type="text/javascript">
+			/*
+			 *打印指定数据到页面上，并换行
+			 */
+			function println(param){
+				document.write(param+"<br/>");
+			}
+
+			/*
+			 *打印指定数据到页面上
+			 */
+			function print(param){
+				document.write(param);
+			}
+		</script>
+		
+		<script type="text/javascript">
+			//parseInt("123");
+			/*
+			 *演示global的全局方法
+			 */
+			println(parseInt("123")+1);//124
+			
+			var val=parseInt("12abc");//val=12
+			
+			println("value"+val);//通过isNaN来判断结果是否非法
+			
+			/*
+			 *将指定进制格式的字符串转换成十进制
+			 */
+			println("<hr/>");
+			var num=parseInt("110",10);
+			println("num="+num);//num=110
+			
+			var num1=parseInt("0x3c",16);
+			println("num1="+num1);//num1=60
+			
+			/*
+			 *将十进制的数转换成其他进制，使用数字对象来完成
+			 */
+			println("<hr/>");
+			var num3=new Number(6);
+			println("num3="+num3.toString(2));//num3=110
+			
+			var num4=new Number(60);
+			println("num4="+num4.toString(16));//num4=3c
+			
+			/*
+			 *js中的特有语句 for in
+			 *格式：
+			 *for(变量 in 对象)//对对象进行变量的语句
+			 *{
+			 *}
+			 */
+			println("<hr/>");
+			var arr=[32,80,65];
+			
+			for(i in arr){
+				println("i="+arr[i]);
+			}
+			
+			println("<hr/>");
+			var numObj=new Number(4);
+			for(x in numObj){
+				println(x);
+			}
+			
+			/*
+			 *js自定义对象
+			 *如果想要自定义对象，应该先对对象进行描述
+			 *js是基于对象的，不是面向对象的，不具备描述事物的能力
+			 *我们还想按照面向对象的思想编写js,就要先描述
+			 *在js中，可以用函数来模拟面向对象中对事物的描述
+			 */
+			
+			//用js来描述人
+			function Person(){//相当于构造器
+				alert("person run");
+			}
+			 
+			//通过描述进行对象的建立 new
+			var p=new Person();
+			//动态给p对象添加属性，直接使用 p.属性名即可
+			p.name="张三";
+			p.age=22;
+			p.show=function(){
+				alert("show:"+this.name+":"+this.age);
+			}
+			
+			//p.show();
+			
+			
+			function Person(name,age){
+				//在给Person对象添加了两个属性
+				this.name=name;
+				this.age=age;
+				
+				this.setName=function(name){
+					this.name=name;
+				}
+				
+				this.getName=function(){
+					return this.name;
+				}
+			}
+			
+			var p=new Person("旺财",20);
+			
+			p.setName="小强";
+			//alert(p.name);
+			//alert(p.getName());
+			
+			//直接使用{}定义属性和值的键值对方式。键值键通过:连接，键与键之间用逗号隔开
+			var pp={
+				//定义一些成员
+				"name":"小明","age":25,
+				"getName":function(){
+					return this.name;
+				}
+			}
+			
+			/*
+			for(x in p){
+				println(x+":"+p[x]);
+			}
+			*/
+			
+			//对象调用成员有两种方式：对象.属性  对象["属性名"]
+			//alert(pp.age+":"+pp.getName());
+			//alert(pp["age"]+":"+pp.getName());
+			
+			var oMap={
+				8:"小强",3:"旺财",7:"小明"
+			}
+			
+			var val1=oMap[8];
+			//alert("val1="+val1);
+			
+			var val2=get(7);
+			//alert("val2="+val2);
+			
+			function get(key){
+				return oMap[key];
+			}
+			
+			var myobj={
+				myname:"lisisi",myage:30
+			}
+			
+			//alert(myobj.myname+":"+myobj["myname"]);
+			
+			var myobj2={
+				myname2:"haha",myage2:20
+			}
+			
+			//alert(myobj2.myname2+":"+myobj2["myage2"]);
+			
+			//当对象多的时候可以按照下列方式书写
+			var myMap={
+				//names:["lisi1","lisi2","lisi3"],ages:[20,30,40]
+				names:[{name1:"zhangsan"},{myname:"hahaha"}]
+			}
+			//alert(myMap.names[1]);
+			alert(myMap.names[0].name1);
+			
+		</script>
+		
+	</body>
+</html>
