@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>演示js中的日期</title>
+	</head>
+	
+	<body>
+		<script type="text/javascript">
+			/*
+			 *打印指定数据到页面上，并换行
+			 */
+			function println(param){
+				document.write(param+"<br/>");
+			}
+
+			/*
+			 *打印指定数据到页面上
+			 */
+			function print(param){
+				document.write(param);
+			}
+		</script>
+		
+		<script type="text/javascript">
+			/*
+			 *演示js中的日期
+			 */
+			 
+			var date=new Date();
+			println(date);
+			println(date.toLocaleString());//日期和时间
+			println(date.toLocaleDateString());//只有日期
+			
+			/*
+			 *为了简化对象调用内容的书写，可以使用js中的特有语句with来完成。
+			 *格式：
+			 *with(对象)
+			 *{
+			 *		在该区域中可以直接使用指定的对象的内容，不需要写 对象.
+			 *}
+			 */
+			
+			with(date){
+				var year=getFullYear();
+				var month=getMonth()+1;
+				var day=getDate();//得到一个月中的第几天
+				var week=getWeek(date.getDay());//得到一个星期中的第几天
+				println(year+"-----"+month+"-----"+day+"-----"+week);
+			}
+			
+			var year=date.getFullYear();
+			var month=date.getMonth()+1;
+			var day=date.getDate();//得到一个月中的第几天
+			var week=getWeek(date.getDay());//得到一个星期中的第几天
+			println(year+"-"+month+"-"+day+"-"+week);
+			
+			function getWeek(num){
+				var weeks=['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+				return weeks[num];
+			}
+			
+			//日期对象和毫秒值之间的转换
+			var date2=new Date();
+			//获取毫秒值，日期对象——>毫秒值
+			var time=date2.getTime();
+			println("time:"+time);//time:1489455270560
+			//将毫秒值转换成日期对象
+			//1、new Date(time); 2、setTime();
+			var date3=new Date(time);
+			
+			//将日期对象和字符串之间进行转换
+			//日期对象转换成字符串 toLocaleString  toLocaleDateString
+			//将字符串转成日期对象，具备指定格式的日期字符串——>毫秒值——>日期对象
+			var str_date="2/7/2017";
+			
+			var time2=Date.parse(str_date);
+			
+			var date3=new Date(time2);
+			
+			println(date3.toLocaleDateString());
+		</script>
+	
+	</body>
+</html>
