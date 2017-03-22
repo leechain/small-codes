@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+	<meta charset="UTF-8">
+		<title>js small codes 13</title>
+		
+		<script type="text/javascript">
+		
+			function focus2(x){
+				console.log(x)
+				document.getElementById(x).style.background="blue"
+			}
+			
+			function select2(x){
+				console.log(x)
+				document.getElementById(x).style.background="red"
+			}
+			
+		</script>
+	</head>
+
+	<body>
+		onselect 事件和onfocus事件：<input type="text" onfocus="focus2(this.id)" onselect="select2(this.id)" id="bg" />
+	</body>
+
+</html> 

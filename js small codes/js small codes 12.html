@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+	<meta charset="UTF-8">
+	<title>js small codes 12</title>
+	
+		<script type="text/javascript">
+		function setStyle(x)
+		{
+		console.log(x)
+		document.getElementById(x).style.background="yellow"
+		}
+		</script>
+	</head>
+
+	<body>
+
+		First name: <input type="text"
+		onfocus="setStyle(this.id)" id="fname" />
+		<br />
+		Last name: <input type="text"
+		onfocus="setStyle(this.id)" id="lname" />
+
+	</body>
+</html>
