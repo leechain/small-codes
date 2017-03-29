@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Hello World</title>
+		<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+		<script type="text/javascript">
+			
+			//$(function(){})相当于window.onload,代码写在{}之间
+			$(function(){
+			
+				//1.选取button $("button")
+				//2.为button添加click响应函数  $("button").click(function(){}) 代码写在function的大括号中
+				$("button").click(function(){
+				
+					//弹出helloworld对话框
+					alert("Hello World!");
+					alert($(this).text());
+					
+					//jQuery和DOM对象
+					
+					//将jQuery对象转换成DOM对象
+					//1).获取一个jQuery对象
+					$btn=$("button");
+					
+					//2).jQuery对象是一个数组
+					alert($btn.length);
+					
+					//3).可以通过数组的下标将jQuery对象转换成DOM对象
+					alert($btn[0].firstChild.nodeValue);
+					
+					
+					//将DOM对象转换成jQuery对象
+					//1).选取一个DOM对象
+					var btn=document.getElementById("btn");
+					
+					//2).把DOM对象转为一个jQuery对象，使用$()进行封装
+					alert("--"+$(btn).text());
+					
+				})
+			})
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<button id="btn">Click Me</button>
+		<button id="btn">Click Me2</button>
+	</body>
+</html>
