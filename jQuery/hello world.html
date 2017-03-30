@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
-		<title>Hello World</title>
+		<title>第一个jQuery代码</title>
 		<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
 		<script type="text/javascript">
 			
@@ -17,8 +17,8 @@
 					alert("Hello World!");
 					alert($(this).text());
 					
-					//jQuery和DOM对象
 					
+					//jQuery和DOM对象之间的相互转换					
 					//将jQuery对象转换成DOM对象
 					//1).获取一个jQuery对象
 					$btn=$("button");
@@ -36,12 +36,9 @@
 					
 					//2).把DOM对象转为一个jQuery对象，使用$()进行封装
 					alert("--"+$(btn).text());
-					
 				})
 			})
-			
-			
-			
+
 		</script>
 	</head>
 	<body>
