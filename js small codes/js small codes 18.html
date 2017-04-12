@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	 <head>
+		  <title>表格操作</title>  
+		  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>   
+		  <script type="text/javascript"> 
+		  
+			  window.onload = function(){
+						  
+			 // 鼠标移动改变背景,可以通过给每行绑定鼠标移上事件和鼠标移除事件来改变所在行背景色。
+			  changeColor();//调用改变背景颜色事件
+			 
+			}
+			
+			
+			//定义改变行背景颜色的函数
+			function changeColor(){
+				//获取表格中所有的行
+				var oTrNodes=document.getElementsByTagName("tr");
+				
+				//遍历每一行，定义鼠标经过和移开事件，遍历时从第二行开始
+				for(var i=1;i<oTrNodes.length;i++){
+				
+					//鼠标经过事件
+					oTrNodes[i].onmouseover=function(){
+						this.style.backgroundColor="grey";
+					}
+					
+					//鼠标移开事件
+					oTrNodes[i].onmouseout=function(){
+						this.style.backgroundColor="white";
+					}
+				}
+			
+			}
+			
+			   
+			 // 编写一个函数，供添加按钮调用，动态在表格的最后一行添加子节点；
+			 function addTr(){
+				//获取表格对象
+				var tb=document.getElementById("table");
+				
+				//创建行对象
+				var newtr=document.createElement("tr");
+				
+				//创建三个列对象
+				var newtd1=document.createElement("td");
+				var newtd2=document.createElement("td");
+				var newtd3=document.createElement("td");
+				
+				//创建超链接对象
+				var newa=document.createElement("a");
+				
+				//给每个对象添加相应的内容
+				newtd1.innerHTML="xh003";
+				newtd2.innerHTML="张小东";
+				newa.innerHTML="删除";
+				newa.href="javascript:;";
+				
+				//根据对象之间的从属关系，构建关系节点树
+				newtd3.appendChild(newa);
+				newtr.appendChild(newtd1);
+				newtr.appendChild(newtd2);
+				newtr.appendChild(newtd3);
+				tb.appendChild(newtr);
+				
+				//给超链接对象添加删除节点事件
+				newa.setAttribute("onclick","delTr(this)");
+				
+				//给新添加的行添加改变背景颜色事件
+				changeColor();
+			 }
+					
+			 
+			 // 创建删除函数
+			 function delTr(node){//obj是外面传入的参数this，也就是删除字段的节点td
+
+				 var a=node.parentNode.parentNode.parentNode;//获取最外层节点table
+
+				 var b=node.parentNode.parentNode;//获取第二层节点tr，tr里有3个td，为一行
+
+				 a.removeChild(b);//利用父节点table删除子节点tr
+
+			 }
+
+
+		  </script> 
+		  
+	 </head> 
+	 
+	 <body> 
+		   <table border="1" width="50%" id="table">
+		   <tr>
+			<th>学号</th>
+			<th>姓名</th>
+			<th>操作</th>
+		   </tr>  
+
+		   <tr>
+			<td>xh001</td>
+			<td>王小明</td>
+			<td><a href="javascript:;" onclick="delTr(this)">删除</a></td>   <!--在删除按钮上添加点击事件  -->
+		   </tr>
+
+		   <tr>
+			<td>xh002</td>
+			<td>刘小芳</td>
+			<td><a href="javascript:;" onclick="delTr(this)">删除</a></td>   <!--在删除按钮上添加点击事件  -->
+		   </tr>  
+
+		   </table>
+		   <input type="button" value="添加一行"  onclick="addTr()"/>   <!--在添加按钮上添加点击事件  -->
+	 </body>
+</html>
