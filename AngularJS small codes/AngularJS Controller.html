@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="test">
+<head lang="en">
+<meta charset="UTF-8">
+<title>Angular Controller</title>
+<script src="angular.min.js"></script>
+<script>
+	var app=angular.module('test',[]);
+	
+	app.controller('zhangsan',function($scope){
+		$scope.a=12;
+	});
+</script>
+</head>
+
+<body>
+	<div ng-controller="zhangsan">
+		a:<span>{{a}}</span>
+	</div>
+		b:<span>{{a}}</span>
+</body>
+</html>
