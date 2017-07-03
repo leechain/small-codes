@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>双向数据绑定</title>
+	<script src="angular.min.js"></script>
+	<script type="text/javascript">
+		var app=angular.module('myApp',[]);
+	</script>
+</head>
+
+<body ng-app="myApp">
+	<input type="text" ng-model="name" ng-minlength="3" ng-maxlength="10"/>
+	<div>{{name}}</div>
+	<input type="text" ng-model="name" ng-minlength="3" ng-maxlength="10"/>
+	<div>{{name}}</div>
+</body>
+</html>
