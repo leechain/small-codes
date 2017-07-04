@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="form-development" ng-controller="form1">
+<head lang="en">
+<meta charset="UTF-8">
+<title>表单开发</title>
+</head>
+
+<body>
+
+<!-- 简单的表单提交 -->
+<form ng-submit="PostForm()">
+<ul>
+		<li><label>用户名：</label><input type="text" ng-model="form.UserName"/></li>
+		<li><label>昵称：</label><input type="text" ng-model="form.NickName"/></li>
+		<li><label>年龄：</label><input type="text" ng-model="form.Age"/></li>
+		<li><label>是否已婚：</label><input type="checkbox" ng-model="form.IsMarried"/></li>
+		<li><label>喜爱的动物：</label>
+		<input type="radio" ng-model="form.LovedAnimal" value="狗"/>狗
+		<input type="radio" ng-model="form.LovedAnimal" value="猫"/>猫
+		</li>
+		<li><label>居住的城市：</label>
+			<select ng-model="form.LocationCity">
+				<option value="">请选择城市</option>
+				<option value="北京">北京</option>
+				<option value="上海">上海</option>
+				<option value="深圳">深圳</option>
+				<option value="广州">广州</option>
+			</select>
+		</li>
+		<li><input type="submit" value="提交"/></li>
+</ul>
+</form>
+
+<ul>
+<li>{{form.UserName}}</li>
+<li>{{form.NickName}}</li>
+<li>{{form.Age}}</li>
+<li>{{form.IsMarried}}</li>
+<li>{{form.LovedAnimal}}</li>
+<li>{{form.LocationCity}}</li>
+</ul>
+
+<script src="angular-1.0.1.min.js"></script>
+<script>
+	var app=angular.module("form-development",[]);
+	app.controller("form1",function($scope){
+		
+		$scope.form={};
+
+		$scope.PostForm=function(){
+		
+		if($scope.form.UserName==""||$scope.form.UserName==undefined){
+			alert("用户名不能为空！");
+		}
+		
+			console.log($scope.form);
+		    $scope.form=angular.copy($scope.formInitObj);
+		}
+	
+	});
+</script>
+</body>
+</html>
