@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="form-development" ng-controller="form">
+<head lang="en">
+<meta charset="UTF-8">
+<title>表单开发</title>
+</head>
+
+<body>
+
+<!-- 简单的表单提交 -->
+<form name="myForm" ng-submit="PostForm()">
+<ul>
+		<li>
+		<label>用户名：</label><input type="text" name="UserName" ng-model="UserName" ng-pattern="/^\w{8,18}$/"/>
+			<span ng-show="myForm.UserName.$dirty&&myForm.UserName.$invalid">
+			<span ng-show="myForm.UserName.$error.required">用户名是必须的</span>
+			<span>请输入8-18位的用户名</span>
+			</span>
+		</li>
+		
+		<li><label>编号：</label><input type="text" name="UserIndex" ng-model="UserIndex" ng-pattern="/^\d+$"/>
+			<span ng-show="myForm.UserIndex.$dirty&&myForm.UserIndex.$invalid">
+			<span ng-show="myForm.UserIndex.$error.required">用户名是必须的</span>
+			<span>请输入您的数字编号</span>
+			</span>
+		</li>
+		
+		<li><input ng-disabled="myForm.$invalid" type="submit" value="提交"/></li>
+</ul>
+</form>
+
+<script src="angular-1.0.1.min.js"></script>
+<script>
+	var app=angular.module("form-development",[]);
+	app.controller("form",function($scope){
+		
+		$scope.form={};
+
+		$scope.UserName='Tom';
+		
+	
+		$scope.PostForm=function(){
+			console.log($scope.form);
+		}
+			
+	});
+</script>
+</body>
+</html>
