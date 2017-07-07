@@ -1,0 +1,41 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>for...in...</title>
+	</head>
+	
+	<body>
+		<!-- 如何避免从原型属性里继承prototype（）属性，这里使用hasOwnProperty(name)该函数指示一个对象自身（不包括原型链）是否具有制定名称的属性。
+		如果有返回true，如果没有返回false。 --> 
+		<button onclick="getNewArrayOne()">继承原型属性</button>
+		<button onclick="getNewArrayTwo()">不继承原型属性</button>
+		
+		<script type="text/javascript">
+			function getNewArrayOne(){
+				var array=[1,2,3,4,5];
+				Array.prototype.age=13;
+				var result=[];
+			
+				for(i in array){
+					result.push(array[i]);
+				}
+				alert(result.join(""));
+			}
+			
+			function getNewArrayTwo(){
+				var array=[1,2,3,4,5];
+				Array.prototype.age=13;
+				var result=[];
+			
+				for(i in array){
+					if(array.hasOwnProperty(i)){
+						result.push(array[i]);
+					}
+				}
+				alert(result.join(""));
+			}
+		</script>
+	</body>
+
+</html>
