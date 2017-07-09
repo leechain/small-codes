@@ -1,0 +1,34 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>for in和for遍历</title>
+	</head>
+	<body>
+		<button onclick="a()">for in</button>
+		<button onclick="b()">for</button>
+		
+		
+		<script type="text/javascript">
+			function a(){
+				var array=[1,2,3,4,5];
+				var result=[];
+				for(var i in array){
+					console.log(i);	
+					result.push(array[i]);
+				}
+				alert(result.join(""));
+			}
+		
+			function b(){
+				var array=[1,2,3,4,5];
+				var result=[];
+				for(var i=0;i<array.length;i++){
+					result.push(array[i]);
+					console.log(i);
+				}
+				alert(result.join(""));
+			}
+		</script>
+	</body>
+</html>
